@@ -1,0 +1,31 @@
+# Checks the published page end to end: it is served, and the browser can read a share from
+# the app's database (CORS and the public key). Run by hand from the Actions tab, or on push.
+name: Check
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Page is served
+        run: |
+          for i in 1 2 3 4 5 6; do
+            curl -fsS https://rifatcakir.github.io/food-planner-share/ -o page.html && grep -q get_share page.html && break
+            sleep 20
+          done
+          grep -q get_share page.html
+      - name: Browser can read a share
+        run: |
+          url=$(grep -o 'https://[a-z0-9]*\.supabase\.co' page.html | head -1)
+          key=$(grep -o 'sb_publishable_[A-Za-z0-9_]*' page.html | head -1)
+          curl -fsS -D headers.txt -X POST "$url/rest/v1/rpc/get_share" \
+            -H "apikey: $key" -H "Content-Type: application/json" \
+            -H "Origin: https://rifatcakir.github.io" \
+            -d '{"share_token": "AAAAAAAAAAAA"}' -o body.txt
+          cat headers.txt body.txt
+          grep -qi '^access-control-allow-origin' headers.txt
+          grep -qx 'null' body.txt

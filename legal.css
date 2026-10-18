@@ -1,0 +1,253 @@
+/* The privacy policy, terms of use and account-deletion page: the share page's look, set for
+   reading. */
+:root {
+  --background: #fbf4e9;
+  --surface: #fffdf8;
+  --surface-alt: #f5eadb;
+  --separator: #eadbc8;
+  --text: #2b1d14;
+  --muted: #7a6656;
+  --primary: #c4532e;
+  --on-primary: #ffffff;
+  --accent: #6e8b3d;
+  --accent-text: #a8431f;
+  --tint: #f3d9c6;
+  --on-tint: #7e3015;
+  --olive: #e4e7cf;
+  --on-olive: #3f4a18;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #1b1410;
+    --surface: #271d17;
+    --surface-alt: #33271f;
+    --separator: #3e3028;
+    --text: #f7eee4;
+    --muted: #c2ae9c;
+    --primary: #e06a43;
+    --on-primary: #1b1410;
+    --accent: #9bb866;
+    --accent-text: #f08b66;
+    --tint: #4a2c20;
+    --on-tint: #f5b9a1;
+    --olive: #353a22;
+    --on-olive: #cfd9a6;
+  }
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--text);
+  font:
+    17px/1.55 "DM Sans",
+    system-ui,
+    sans-serif;
+}
+main {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 20px 16px 64px;
+}
+a {
+  color: var(--accent-text);
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.4px;
+  text-decoration: none;
+}
+.langs {
+  display: flex;
+  gap: 6px;
+}
+.langs a {
+  border-radius: 999px;
+  padding: 5px 12px;
+  font-size: 14px;
+  text-decoration: none;
+  color: var(--muted);
+  background: var(--surface-alt);
+}
+.langs a[aria-current="true"] {
+  background: var(--text);
+  color: var(--background);
+}
+h1 {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 600;
+  font-size: 34px;
+  line-height: 1.12;
+  margin: 28px 0 6px;
+}
+h2 {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1.25;
+  margin: 36px 0 10px;
+}
+.updated {
+  color: var(--muted);
+  font-size: 14px;
+  margin: 0 0 20px;
+}
+.lead {
+  background: var(--tint);
+  color: var(--text);
+  border-radius: 22px;
+  padding: 18px 20px;
+  margin: 0;
+}
+h1 + .lead {
+  margin-top: 16px;
+}
+.lead strong {
+  color: var(--on-tint);
+}
+p,
+ul,
+ol {
+  margin: 10px 0;
+}
+li + li {
+  margin-top: 6px;
+}
+.cards {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0;
+  background: var(--surface);
+  border-radius: 22px;
+  overflow: hidden;
+}
+.cards > li {
+  padding: 14px 18px;
+  margin: 0;
+}
+.cards > li + li {
+  border-top: 1px solid var(--separator);
+}
+.cards strong {
+  display: block;
+}
+.note {
+  background: var(--olive);
+  color: var(--on-olive);
+  border-radius: 18px;
+  padding: 14px 18px;
+}
+.path {
+  font-weight: 600;
+  white-space: nowrap;
+}
+footer {
+  margin-top: 48px;
+  padding-top: 18px;
+  border-top: 1px solid var(--separator);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  font-size: 15px;
+}
+
+/* The deletion form */
+.panel {
+  background: var(--surface);
+  border-radius: 22px;
+  padding: 20px;
+  margin: 12px 0;
+  display: grid;
+  gap: 14px;
+}
+.panel p {
+  margin: 0;
+}
+.panel form,
+.panel > div {
+  display: grid;
+  gap: 14px;
+}
+label {
+  font-weight: 600;
+  font-size: 15px;
+  display: grid;
+  gap: 6px;
+}
+input[type="email"],
+input[type="text"] {
+  font: inherit;
+  color: var(--text);
+  background: var(--background);
+  border: 1.5px solid var(--separator);
+  border-radius: 14px;
+  min-height: 50px;
+  padding: 0 14px;
+  width: 100%;
+}
+input:focus-visible,
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
+}
+.check {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-weight: 400;
+}
+.check input {
+  width: 22px;
+  height: 22px;
+  margin: 2px 0 0;
+  accent-color: var(--primary);
+  flex: none;
+}
+button {
+  font: inherit;
+  font-weight: 700;
+  min-height: 52px;
+  border: 0;
+  border-radius: 16px;
+  padding: 0 20px;
+  background: var(--primary);
+  color: var(--on-primary);
+  cursor: pointer;
+}
+button:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+.message {
+  border-radius: 14px;
+  padding: 12px 14px;
+  background: var(--surface-alt);
+}
+.message.error {
+  background: var(--tint);
+  color: var(--on-tint);
+}
+.message.done {
+  background: var(--olive);
+  color: var(--on-olive);
+}
+[hidden] {
+  display: none !important;
+}

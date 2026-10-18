@@ -1,5 +1,5 @@
-# Checks the published page end to end: it is served, and the browser can read a share from
-# the app's database (CORS and the public key). Run by hand from the Actions tab, or on push.
+# Checks the published pages end to end: the share page and the legal pages are served, and the
+# browser can read a share from the app's database (CORS and the public key). Run by hand from the Actions tab, or on push.
 name: Check
 
 on:
@@ -18,6 +18,13 @@ jobs:
             sleep 20
           done
           grep -q get_share page.html
+      - name: Legal pages are served
+        run: |
+          base=https://rifatcakir.github.io/food-planner-share
+          for page in privacy.html terms.html delete.html delete.js legal.js legal.css fonts/fonts.css; do
+            curl -fsS -o /dev/null "$base/$page"
+          done
+          curl -fsS "$base/delete.html" | grep -q delete.js
       - name: Browser can read a share
         run: |
           url=$(grep -o 'https://[a-z0-9]*\.supabase\.co' page.html | head -1)

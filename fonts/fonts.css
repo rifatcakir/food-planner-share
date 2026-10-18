@@ -1,0 +1,26 @@
+/* The app's typefaces, served from this site so a visit reaches no one else
+   (SIL Open Font License; see the OFL files next to this one). */
+@font-face {
+  font-family: "DM Sans";
+  font-weight: 400;
+  font-display: swap;
+  src: url("DMSans_400Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "DM Sans";
+  font-weight: 600;
+  font-display: swap;
+  src: url("DMSans_600SemiBold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "DM Sans";
+  font-weight: 700;
+  font-display: swap;
+  src: url("DMSans_700Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Fraunces";
+  font-weight: 600;
+  font-display: swap;
+  src: url("Fraunces_600SemiBold.ttf") format("truetype");
+}

@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; style-src 'self'; script-src 'self'; img-src 'self' data:; connect-src https://xfwhpciavuzoxgktilwz.supabase.co"
+    />
+    <meta name="referrer" content="no-referrer" />
+    <title>Delete your account · Food Planner</title>
+    <meta name="theme-color" content="#FBF4E9" />
+    <link rel="stylesheet" href="fonts/fonts.css" />
+    <link rel="stylesheet" href="legal.css" />
+  </head>
+  <body
+    data-title-tr="Hesabını sil"
+    data-title-en="Delete your account"
+    data-title-nl="Je account verwijderen"
+  >
+    <main>
+      <div class="top">
+        <span class="brand">
+          <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 11h16v3a6 6 0 0 1-6 6h-4a6 6 0 0 1-6-6z" fill="#C4532E" />
+            <rect x="2.5" y="9" width="19" height="2.4" rx="1.2" fill="currentColor" />
+          </svg>
+          FOOD PLANNER
+        </span>
+        <nav class="langs" aria-label="Language">
+          <a href="?lang=tr" data-to="tr" lang="tr">Türkçe</a>
+          <a href="?lang=en" data-to="en" lang="en">English</a>
+          <a href="?lang=nl" data-to="nl" lang="nl">Nederlands</a>
+        </nav>
+      </div>
+
+      <h1>
+        <span data-lang="tr">Food Planner hesabını sil</span
+        ><span data-lang="en">Delete your Food Planner account</span
+        ><span data-lang="nl">Je Food Planner-account verwijderen</span>
+      </h1>
+      <p class="lead">
+        <span data-lang="tr"
+          >Hesabını ve verilerini istediğin zaman silebilirsin: uygulamada ya da uygulaman yoksa
+          burada.</span
+        ><span data-lang="en"
+          >You can delete your account and your data at any time: in the app, or here if you no
+          longer have the app.</span
+        ><span data-lang="nl"
+          >Je kunt je account en je gegevens altijd verwijderen: in de app, of hier als je de app
+          niet meer hebt.</span
+        >
+      </p>
+
+      <article data-lang="tr" lang="tr">
+        <h2>Uygulamada</h2>
+        <ol>
+          <li>Bugün ekranının üstündeki yuvarlak düğmeye dokunup Ayarlar'ı aç.</li>
+          <li>
+            <span class="path">Verilerin</span> bölümünde <span class="path">Hesabımı sil</span>'e
+            dokun ve onayla.
+          </li>
+        </ol>
+        <h2>Burada</h2>
+        <p>
+          Giriş yaptığın e-posta adresini yaz. Sana bir e-posta göndeririz; içindeki linki bu
+          cihazda açınca buraya döner ve silmeyi onaylarsın.
+        </p>
+      </article>
+      <article data-lang="en" lang="en">
+        <h2>In the app</h2>
+        <ol>
+          <li>Tap the round button at the top of the Today screen to open Settings.</li>
+          <li>
+            Under <span class="path">Your data</span>, tap
+            <span class="path">Delete my account</span> and confirm.
+          </li>
+        </ol>
+        <h2>Here</h2>
+        <p>
+          Type the e-mail address you sign in with. We send you an e-mail; open the link in it on
+          this device and you come back here to confirm.
+        </p>
+      </article>
+      <article data-lang="nl" lang="nl">
+        <h2>In de app</h2>
+        <ol>
+          <li>Tik op de ronde knop boven in het scherm Vandaag om Instellingen te openen.</li>
+          <li>
+            Tik onder <span class="path">Jouw gegevens</span> op
+            <span class="path">Mijn account verwijderen</span> en bevestig.
+          </li>
+        </ol>
+        <h2>Hier</h2>
+        <p>
+          Typ het e-mailadres waarmee je inlogt. We sturen je een mail; open de link erin op dit
+          apparaat, dan kom je hier terug om te bevestigen.
+        </p>
+      </article>
+
+      <section class="panel" aria-live="polite">
+        <form id="request">
+          <label
+            ><span
+              ><span data-lang="tr">E-posta adresin</span
+              ><span data-lang="en">Your e-mail address</span
+              ><span data-lang="nl">Je e-mailadres</span></span
+            >
+            <input id="email" type="email" autocomplete="email" inputmode="email" required />
+          </label>
+          <button id="send" type="submit">…</button>
+        </form>
+        <p id="sent" class="message" hidden></p>
+        <form id="code-form" hidden>
+          <label
+            ><span
+              ><span data-lang="tr">E-postada 6 haneli bir kod varsa buraya da yazabilirsin</span
+              ><span data-lang="en">If the e-mail shows a 6-digit code, you can type it here</span
+              ><span data-lang="nl"
+                >Staat er een code van 6 cijfers in de mail, typ die dan hier</span
+              ></span
+            >
+            <input
+              id="code"
+              type="text"
+              inputmode="numeric"
+              autocomplete="one-time-code"
+              maxlength="6"
+              pattern="[0-9]*"
+            />
+          </label>
+          <button id="verify" type="submit">…</button>
+        </form>
+        <div id="confirm" hidden>
+          <p id="who"></p>
+          <label class="check">
+            <input id="understand" type="checkbox" />
+            <span
+              ><span data-lang="tr"
+                >Hesabımın ve aşağıda yazan verilerin kalıcı olarak silineceğini anlıyorum. Bu geri
+                alınamaz.</span
+              ><span data-lang="en"
+                >I understand that my account and the data listed below will be deleted for good.
+                This can't be undone.</span
+              ><span data-lang="nl"
+                >Ik begrijp dat mijn account en de gegevens hieronder definitief worden gewist. Dit
+                kan niet ongedaan worden gemaakt.</span
+              ></span
+            >
+          </label>
+          <button id="delete" type="button" disabled>…</button>
+        </div>
+        <p id="result" class="message" role="status" hidden></p>
+      </section>
+
+      <article data-lang="tr" lang="tr">
+        <h2>Neler silinir</h2>
+        <ul>
+          <li>
+            Hesabın ve e-posta adresin, profilin, onayların, AI kullanımın, geri bildirimlerin ve
+            hata kayıtların.
+          </li>
+          <li>Hanedeki kişi kaydın: alerjilerin, diyetlerin ve sevmediklerin.</li>
+          <li>
+            Tek üyesi olduğun hane, içindeki her şeyle birlikte: tarifler, fotoğraflar, planlar,
+            alışveriş listeleri, paylaşım linkleri ve Keşfet'teki menüler.
+          </li>
+        </ul>
+        <h2>Neler kalır</h2>
+        <ul>
+          <li>
+            Başkalarıyla paylaştığın hanede hane ve tarifleri, planları, listeleri, paylaşım
+            linkleri ve Keşfet menüleri diğerlerinde kalır; onlardan biri hanenin sahibi olur. O
+            hane için açtığın link ve menülerde, adın yayınlandığı haliyle kalır; diğerleri bunları
+            kaldırabilir.
+          </li>
+          <li>Sağlayıcımızın yedeklerindeki kopyalar en geç 30 gün içinde kaybolur.</li>
+        </ul>
+        <p class="note">
+          Tariflerini saklamak mı istiyorsun? Önce verilerini indir:
+          <span class="path">Ayarlar → Verilerin → Verilerimi indir</span>.
+          <a data-page="privacy" href="privacy.html?lang=tr">Gizlilik politikası</a>
+        </p>
+      </article>
+      <article data-lang="en" lang="en">
+        <h2>What is deleted</h2>
+        <ul>
+          <li>
+            Your account and e-mail address, your profile, consents, AI usage, feedback and error
+            reports.
+          </li>
+          <li>Your person in the household: your allergies, diets and dislikes.</li>
+          <li>
+            A household you are the only member of, with everything in it: recipes, photos, plans,
+            shopping lists, share links and menus in Discover.
+          </li>
+        </ul>
+        <h2>What stays</h2>
+        <ul>
+          <li>
+            In a household you share with others, the household and its recipes, plans, lists, share
+            links and Discover menus stay with them, and one of them becomes its owner. Links and
+            menus you made for that household keep the first name they were published under; the
+            others can take them down.
+          </li>
+          <li>Copies in our host's backups disappear within 30 days.</li>
+        </ul>
+        <p class="note">
+          Want to keep your recipes? Download your data first:
+          <span class="path">Settings → Your data → Download my data</span>.
+          <a data-page="privacy" href="privacy.html?lang=en">Privacy policy</a>
+        </p>
+      </article>
+      <article data-lang="nl" lang="nl">
+        <h2>Wat wordt gewist</h2>
+        <ul>
+          <li>
+            Je account en e-mailadres, je profiel, toestemmingen, AI-gebruik, feedback en
+            foutmeldingen.
+          </li>
+          <li>Je persoon in het huishouden: je allergieën, diëten en wat je niet lust.</li>
+          <li>
+            Een huishouden waarvan jij het enige lid bent, met alles erin: recepten, foto's,
+            planningen, boodschappenlijsten, deellinks en menu's in Ontdekken.
+          </li>
+        </ul>
+        <h2>Wat blijft</h2>
+        <ul>
+          <li>
+            In een huishouden dat je met anderen deelt, blijven het huishouden en de recepten,
+            planning, lijsten, deellinks en menu's in Ontdekken bij hen, en wordt een van hen de
+            eigenaar. Links en menu's die je voor dat huishouden maakte, houden de voornaam waarmee
+            ze gepubliceerd zijn; de anderen kunnen ze weghalen.
+          </li>
+          <li>Kopieën in de back-ups van onze hostingpartij verdwijnen binnen 30 dagen.</li>
+        </ul>
+        <p class="note">
+          Wil je je recepten houden? Download eerst je gegevens:
+          <span class="path">Instellingen → Jouw gegevens → Mijn gegevens downloaden</span>.
+          <a data-page="privacy" href="privacy.html?lang=nl">Privacybeleid</a>
+        </p>
+      </article>
+
+      <footer>
+        <a data-page="privacy" href="privacy.html"
+          ><span data-lang="tr">Gizlilik</span><span data-lang="en">Privacy</span
+          ><span data-lang="nl">Privacy</span></a
+        >
+        <a data-page="terms" href="terms.html"
+          ><span data-lang="tr">Kullanım koşulları</span><span data-lang="en">Terms of use</span
+          ><span data-lang="nl">Gebruiksvoorwaarden</span></a
+        >
+        <a data-page="delete" href="delete.html"
+          ><span data-lang="tr">Hesabı sil</span><span data-lang="en">Delete account</span
+          ><span data-lang="nl">Account verwijderen</span></a
+        >
+      </footer>
+    </main>
+    <script src="legal.js"></script>
+    <script src="delete.js"></script>
+  </body>
+</html>
